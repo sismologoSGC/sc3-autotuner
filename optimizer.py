@@ -127,11 +127,12 @@ class CSVData:
     def values(self):
         if self.phase == 'P':
             line = f'{self.net}.{self.sta},{self.best_params["p_sta"]},'
-            line += f'{self.best_params["p_sta_width"]},{self.best_params["p_fmin"]},'
-            line += f'{self.best_params["p_fwidth"]},{self.best_params["aic_fmin"]},'
-            line += f'{self.best_params["aic_fwidth"]},{self.best_params["p_timecorr"]},'
+            line += f'{self.best_params["p_sta"] + self.best_params["p_sta_width"]},{self.best_params["p_fmin"]},'
+            line += f'{self.best_params["p_fmin"] + self.best_params["p_fwidth"]},{self.best_params["aic_fmin"]},'
+            line += f'{self.best_params["aic_fmin"] + self.best_params["aic_fwidth"]},{self.best_params["p_timecorr"]},'
             line += f'{self.best_params["p_snr"]},{self.best_params["trig_on"]},{self.best_params["best_f1"]}\n'
             return line
+
         elif self.phase == 'S':
             return f'{self.net}.{self.sta},{self.best_params["s_fmin"]},{self.best_params["s_fwidth"]},{self.best_params["s_snr"]},{self.best_params["best_f1"]}\n'
 
