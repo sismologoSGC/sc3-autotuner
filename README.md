@@ -28,7 +28,7 @@ Ajuste automático de parámetros de los módulos de SeisComP3 scautopick y scan
 3. Descargue el repositorio de sc3-autotuner:
 
     ```bash
-    $ git clone https://github.com/dsiervo/sc3-autotuner
+    $ git clone https://github.com/sismologoSGC/sc3-autotuner.git
     $ cd sc3-autotuner
     ```
 
@@ -101,21 +101,27 @@ A continuación se explicará cada uno de estos parámetros:
 
 **-** `debug`: Si es `True` muestra información de depuración y mostrará plots de los resultados.
 
-**-** `db_ip`: Dirección IP del servidor SQL para la consulta de picks y eventos.
+**-** `db_ip`: Dirección IP del servidor SQL para la consulta de picks y eventos. Por ejemplo:
+
+        db_ip = 10.100.100.123
 
 **-** `ti`: Tiempo inicial para la consulta de picks y eventos. Debe ser una fecha en formato `YYYY-MM-DD HH:MM:SS`.
 
 **-** `tf`: Tiempo final para la consulta de picks y eventos. Debe ser una fecha en formato `YYYY-MM-DD HH:MM:SS`.
 
-**-** `inv_xml`: Ruta al archivo XML de con la información del inventory. Puede usar el módulo de SeisComP3 [scxmldump](https://docs.gempa.de/seiscomp3/current/apps/scxmldump.html) para generar el archivo.
+**-** `inv_xml`: Ruta al archivo XML con la información del inventory. Puede usar el módulo de SeisComP3 [scxmldump](https://docs.gempa.de/seiscomp3/current/apps/scxmldump.html) para generar el archivo. Por ejemplo:
+       
+       inv_xml: /home/sis/inventory.xml
 
 
 ### Opciones del modo picker
 **-** `stations`: Lista de estaciones a usar separadas por coma en formato: `<network>.<station>.<location>.<channel sin componente>`. Por ejemplo:
 
     stations = IU.ANMO.10.BH, CM.BAR2.00.HH, CM.DBB.20.EH
+    
+**-** `fdsn_ip`: Dirección IP y puerto del servidor FDSN para la descarga de las formas de onda (Usualmente en SeisComP3 la IP del servidor FDSN es la misma que la IP del servidor SQL mas el puerto 8091). Por ejemplo:
 
-**-** `fdsn_ip`: Dirección IP y puerto del servidor FDSN para la descarga de las formas de onda (Usualmente en SeisComP3 la IP del servidor FDSN es la misma que la IP del servidor SQL mas el puerto 8091).
+    fdsn_ip = http://10.100.100.123:8091
 
 **-** `max_picks`: Número máximo de picks manuales por estación a usar en el ajuste.
 
